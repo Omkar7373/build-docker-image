@@ -42,6 +42,7 @@ jobs:
         id: init
         run: |
           cd terraform-aws
+          terraform init
           terraform destroy -auto-approve -input=false
           terraform init
       - name: Terraform Validate
