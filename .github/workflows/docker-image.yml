@@ -32,8 +32,6 @@ jobs:
         run: |
           echo $IMAGE_TAG
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-          echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
         with:
@@ -59,3 +57,7 @@ jobs:
         run: |
           cd terraform-aws
           terraform apply -no-color -input=false
+      - name: Push Docker Image to ECR
+        run:
+           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+           echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
