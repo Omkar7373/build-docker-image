@@ -40,7 +40,7 @@ jobs:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}	
       - name: Terraform Init
         id: init
-      	run: |
+        run: |
           cd terraform-aws
           terraform init
       - name: Terraform Validate
