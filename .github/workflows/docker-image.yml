@@ -60,4 +60,4 @@ jobs:
       - name: Push Docker Image to ECR
         run:
            docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-           echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+           #echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
